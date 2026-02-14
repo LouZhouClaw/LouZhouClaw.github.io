@@ -1,4 +1,4 @@
-# Ziheng Wu · 吴梓恒
+# Ziheng Wu
 
 个人主页 / Personal GitHub Pages site.
 
