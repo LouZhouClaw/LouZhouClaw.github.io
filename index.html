@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ziheng Wu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0d1117;
+            --bg-elevated: #161b22;
+            --border: #30363d;
+            --text: #e6edf3;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-green: #3fb950;
+            --accent-amber: #d29922;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'DM Sans', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+        .wrapper { max-width: 900px; margin: 0 auto; padding: 1.5rem; }
+        h1, h2, h3 { font-family: 'JetBrains Mono', monospace; font-weight: 600; }
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text); }
+        h2 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            margin: 1.25rem 0 0.6rem;
+            padding-bottom: 0.35rem;
+            border-bottom: 1px solid var(--border);
+        }
+        h2:first-of-type { margin-top: 0; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .subtitle { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 0.75rem; }
+        .meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0 1rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+        .meta a { color: var(--accent); }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 2rem;
+            margin-top: 0.5rem;
+        }
+        @media (max-width: 640px) { .tech-grid { grid-template-columns: 1fr; } }
+        .tech-col { min-width: 0; }
+        .section { margin-bottom: 1rem; }
+        .card {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 0.65rem 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .card:last-child { margin-bottom: 0; }
+        .card-title { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; color: var(--text); }
+        .card-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.2rem; }
+        .tag { display: inline-block; font-size: 0.65rem; padding: 0.15rem 0.4rem; border-radius: 4px; background: rgba(88, 166, 255, 0.15); color: var(--accent); margin-right: 0.25rem; margin-top: 0.2rem; }
+        .tag.highlight { background: rgba(63, 185, 80, 0.2); color: var(--accent-green); }
+        .tag.star { background: rgba(210, 153, 34, 0.2); color: var(--accent-amber); }
+        .edu-line { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.15rem; }
+        .exp-line { font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.35rem; display: flex; justify-content: space-between; gap: 1rem; }
+        .exp-line:last-child { margin-bottom: 0; }
+        .exp-company { color: var(--text); font-weight: 500; }
+        .paper-row { margin-bottom: 0.5rem; font-size: 0.85rem; }
+        .paper-row:last-child { margin-bottom: 0; }
+        .paper-title { color: var(--text); }
+        .paper-venue { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.15rem; }
+        .skills { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-top: 0.4rem; }
+        .skills span { font-size: 0.75rem; padding: 0.2rem 0.5rem; border: 1px solid var(--border); border-radius: 4px; color: var(--text-muted); }
+        .footer { margin-top: 2rem; padding-top: 0.75rem; border-top: 1px solid var(--border); font-size: 0.75rem; color: var(--text-muted); text-align: center; }
+        .header-inner { display: flex; align-items: flex-start; gap: 1.25rem; }
+        .avatar-wrap {
+            width: 96px; height: 96px; min-width: 96px; min-height: 96px;
+            border-radius: 50%; overflow: hidden; background: var(--border); flex-shrink: 0;
+        }
+        .avatar-wrap img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 22%; display: block; }
+        .header-text { min-width: 0; }
+        .intro {
+            font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;
+            margin-top: 0.75rem; margin-bottom: 0.5rem;
+        }
+        .card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; margin-top: 0.25rem; }
+        .life-logos { display: flex; gap: 0.75rem; margin-top: 0.6rem; flex-wrap: wrap; }
+        .life-logos img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; border: 1px solid var(--border); }
+        .life-item { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 0.35rem; line-height: 1.45; }
+        .life-item:last-child { margin-bottom: 0; }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <div class="header-inner">
+                <div class="avatar-wrap">
+                    <img src="avatar.png" alt="Ziheng Wu" width="96" height="96">
+                </div>
+                <div class="header-text">
+                    <h1>Ziheng Wu</h1>
+                    <p class="subtitle">ByteDance Senior Algorithm Expert · ZJU</p>
+                    <div class="meta">
+                        <span>zju409@gmail.com</span>
+                        <span>·</span>
+                        <span><a href="https://github.com/wuziheng">GitHub</a></span>
+                        <span>·</span>
+                        <span><a href="https://scholar.google.com/citations?user=FgaARGoAAAAJ">Google Scholar</a></span>
+                    </div>
+                    <p class="intro">
+                        EasyCV / EasyPhoto / Valley Founder & Leader & Core-Contributor. Multiple publications at ICCV, CVPR, NeurIPS, ICLR, ACL. Current focus: multimodal foundation models.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <div class="tech-grid">
+            <div class="tech-col">
+                <section class="section">
+                    <h2>Education</h2>
+                    <div class="card">
+                        <div class="edu-line">Zhejiang University · CKC, 2012 — 2019</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Experience</h2>
+                    <div class="card">
+                        <div class="exp-line">
+                            <span class="exp-company">ByteDance</span>
+                            <span class="card-meta">2024.04 — Present</span>
+                        </div>
+                        <div class="card-meta" style="margin-top: 0.1rem;">TikTok-Ecom / Seed · VLM</div>
+                        <div class="exp-line">
+                            <span class="exp-company">Alibaba Cloud</span>
+                            <span class="card-meta">2020.06 — 2024.04</span>
+                        </div>
+                        <div class="card-meta" style="margin-top: 0.1rem;">Computer Vision / AIGC</div>
+                        <div class="exp-line">
+                            <span class="exp-company">Momenta</span>
+                            <span class="card-meta">2018.06 — 2020.05</span>
+                        </div>
+                        <div class="card-meta" style="margin-top: 0.1rem;">Large-scale face recognition, model structure optimization</div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Open Source</h2>
+                    <div class="card">
+                        <a href="https://github.com/aigc-apps/sd-webui-EasyPhoto" class="card-title">EasyPhoto</a>
+                        <div class="card-meta">AI portrait & digital doppelgänger · 14d→5k★ · 1.5M+ downloads</div>
+                        <span class="tag highlight">5.2k ★</span>
+                    </div>
+                    <div class="card">
+                        <a href="https://github.com/alibaba/EasyCV" class="card-title">EasyCV</a>
+                        <div class="card-meta">Computer vision / self-supervised representation learning</div>
+                        <span class="tag">1.9k ★</span>
+                    </div>
+                    <div class="card">
+                        <a href="https://huggingface.co/bytedance-research/Valley-Eagle-7B" class="card-title">Valley</a>
+                        <div class="card-meta">Vision-Language Model · OpenCompass Top 2 (&lt;10B)</div>
+                        <span class="tag highlight">Top 2</span>
+                    </div>
+                </section>
+            </div>
+
+            <div class="tech-col">
+                <section class="section">
+                    <h2>Skills</h2>
+                    <div class="card">
+                        <div class="skills">
+                            <span>VLM / Multimodal</span>
+                            <span>Pretraining · RLHF</span>
+                            <span>Image / video generation</span>
+                            <span>NAS · Quantization · PEFT</span>
+                            <span>Distributed training</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Publications</h2>
+                    <div class="card">
+                        <div class="paper-row">
+                            <a href="https://arxiv.org/abs/2501.05901" class="paper-title">Valley2: Exploring multimodal models with scalable vision-language design</a>
+                            <div class="paper-venue">Ziheng Wu*, et al. · <a href="https://arxiv.org/abs/2501.05901">arXiv:2501.05901</a> · NeurIPS 2025 (Submitted)</div>
+                        </div>
+                        <div class="paper-row">
+                            <a href="https://arxiv.org/abs/2310.04672" class="paper-title">EasyPhoto: Your Smart AI Photo Generator</a>
+                            <div class="paper-venue">Ziheng Wu*, Jiaqi Xu*, et al. · <a href="https://arxiv.org/abs/2310.04672">arXiv:2310.04672</a> · 2023</div>
+                        </div>
+                        <div class="paper-row">
+                            <a href="https://arxiv.org/abs/2307.08579" class="paper-title">Scale-Aware Modulation Meet Transformer</a>
+                            <div class="paper-venue">Weifeng Lin, Ziheng Wu, et al. · <a href="https://arxiv.org/abs/2307.08579">arXiv:2307.08579</a> · <a href="https://openaccess.thecvf.com/content/ICCV2023/html/Lin_Scale-Aware_Modulation_Meet_Transformer_ICCV_2023_paper.html">ICCV 2023</a></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Life</h2>
+                    <div class="card">
+                        <div class="life-item"><strong>Fitness & climbing</strong> — Gym, indoor bouldering.</div>
+                        <div class="life-item"><strong>PC games</strong> — Dota 2, Path of Exile 2, Diablo IV, 金铲铲.</div>
+                        <div class="life-item"><strong>AAA titles</strong> — Also into various 3A games.</div>
+                        <div class="life-logos">
+                            <img src="https://images.unsplash.com/photo-1522163182402-834f871fd851?w=120&h=120&fit=crop" alt="Climbing" width="56" height="56">
+                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=120&h=120&fit=crop" alt="Gym" width="56" height="56">
+                            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=120&h=120&fit=crop" alt="Gaming" width="56" height="56">
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <footer class="footer">
+            Last updated: 2026-02-14 · Hosted on GitHub Pages
+        </footer>
+    </div>
+</body>
+</html>
